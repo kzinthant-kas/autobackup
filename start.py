@@ -27,7 +27,7 @@ f = open("process.sh","w")
 for drives in drives_list:
   drive1 = drives.split(" ")[0]
   drive2 = drives.split(" ")[1]
-  text_to_write = "python3 process.py -{}  -{}  -sp / -dp / -b 1 -e 600\n".format(drive1, drive2)
+  text_to_write = "python3 process.py -s {}  -d {}  -sp / -dp / -b 1 -e 600\n".format(drive1, drive2)
   f.write(text_to_write)
 
 f.close()
