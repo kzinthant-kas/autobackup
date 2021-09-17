@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
-import subprocess
 import requests
+import time
 
 load_dotenv()
 
@@ -31,5 +31,12 @@ for drives in drives_list:
   drive2 = drives.split(" ")[1]
   text_to_write = "python3 process.py -{}  -{}  -sp / -dp / -b 1 -e 600\n".format(drive1, drive2)
   f.write(text_to_write)
-  
-subprocess.run(["python3","schedule.py"])
+
+f.close()
+time.sleep(3)
+
+seconds_to_wait = int(os.environ["rest_seconds"])
+
+while(True):
+  subprocess.call(['sh', './process.sh'])
+  time.sleep(seconds_to_wait) 
