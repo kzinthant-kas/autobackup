@@ -12,7 +12,7 @@
     },
     "rest_seconds":{
       "description": "Enter rest seconds interval between backups",
-      "value": 3600,
+      "value": "3600",
       "required": true
     },
     "drive_ids":{
@@ -20,7 +20,7 @@
       "required": true
     },
     "process":{
-      "description": "Enter copy or sync, if sync, service accounts group must be content manager",
+      "description": "Enter copy or sync. If sync, service accounts group must be content manager",
       "value":"copy",
       "required": true
     }
