@@ -3,11 +3,13 @@ from dotenv import load_dotenv
 import requests
 import time
 import subprocess
+import shutil
+
 
 load_dotenv()
 
-if not "accounts" in os.listdir():
-  res = requests.get(os.environ["accounts_zip_url"])
+def downloadSA(salink):
+  res = requests.get(salink)
   if res.status_code == 200:
     with open('accounts.zip', 'wb') as f:
       f.truncate(0)
@@ -17,6 +19,22 @@ if not "accounts" in os.listdir():
     print("Service accounts downloaded")
   else:
     raise KeyError
+
+if not "accounts" in os.listdir():
+  downloadSA(os.environ["accounts_zip_url"])
+  safile = open("sa","w")
+  safile.write(os.environ["accounts_zip_url"])
+  safile.close()
+else:
+  safile = open("sa","r")
+  oldLink = safile.readline()
+  if(oldLink != os.environ["accounts_zip_url"]):
+    print("new SA detected")
+    shutil.rmtree("accounts")
+    downloadSA(os.environ["accounts_zip_url"])
+  else:
+    print("no new SA")
+    pass
   
 drives = os.environ["drive_ids"]
 
