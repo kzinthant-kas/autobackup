@@ -8,13 +8,10 @@ load_dotenv()
 if not "accounts" in os.listdir():
   res = requests.get(os.environ["accounts_zip_url"])
   if res.status_code == 200:
-    print("Downloading the file")
     with open('accounts.zip', 'wb') as f:
       f.truncate(0)
       f.write(res.content)
-      print("Downloaded accounts.zip successfully!")
     subprocess.run(["unzip", "-q", "-o", "accounts.zip"])
-    print("unzip accounts.zip successfully!")
     os.remove("accounts.zip")
     print("Service accounts downloaded")
   else:
