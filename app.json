@@ -12,6 +12,7 @@
     },
     "rest_seconds":{
       "description": "Enter rest seconds interval between backups",
+      "value": 3600,
       "required": true
     },
     "drive_ids":{
