@@ -1,0 +1,35 @@
+{
+	"name": "AutoBackUp Script",
+	"description": "Backup Google Shared Drive automatically",
+	"repository": "https://github.com/kzinthant-kas/slam_easy_deploy",
+	"keywords": ["Slam","Slam Mirror Bot"],
+        "website": "https://t.me/drivetalk",
+        "success_url": "https://github.com/kzinthant-kas/autobackup/main/README.md",
+	"env": {
+    "accounts_zip_url":{
+      "description": "Put direct download link of service accounts zip",
+      "required": true
+    },
+    "rest_seconds":{
+      "description": "Enter rest seconds interval between backups",
+      "required": true
+    },
+    "drive_ids":{
+      "description": "Enter [sourceid] [destid],[sourceid] [destid] There is no space beside comma",
+      "required": true
+    },
+    "process":{
+      "description": "Enter copy or sync, if sync service accounts group must be content manager",
+      "value":"copy",
+      "required": true
+    }
+	},
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    },
+    {
+      "url": "https://github.com/amivin/rclone-heroku"
+    }
+  ]
+}
