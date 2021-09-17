@@ -20,7 +20,7 @@
       "required": true
     },
     "process":{
-      "description": "Enter copy or sync, if sync service accounts group must be content manager",
+      "description": "Enter copy or sync, if sync, service accounts group must be content manager",
       "value":"copy",
       "required": true
     }
