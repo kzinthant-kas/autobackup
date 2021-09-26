@@ -28,7 +28,7 @@ if not "accounts" in os.listdir():
 else:
   safile = open("sa","r")
   oldLink = safile.readline()
-  if(oldLink != os.environ["accounts_zip_url"]):
+  if oldLink != os.environ["accounts_zip_url"]:
     print("new SA detected")
     shutil.rmtree("accounts")
     downloadSA(os.environ["accounts_zip_url"])
